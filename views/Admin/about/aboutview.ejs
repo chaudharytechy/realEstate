@@ -1,0 +1,33 @@
+<%- include('../sidebar.ejs') %>
+<%- include('../header.ejs') %>
+
+
+
+<div class="card-body">
+    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+        
+        <tbody>
+           
+       <tr><th>Image</th></tr>
+       <tr><td><img src="<%=aboutdata.about_image.url %>" alt=""></td></tr>
+
+       <tr><th>heading1</th></tr>
+       <tr><td><h3><%= aboutdata.heading1%></h3></td></tr>
+
+       <tr><th>descripation1</th></tr>
+       <tr><td><%= aboutdata.descripation1%></td></tr>
+
+       <tr><th>heading2</th></tr>
+       <tr><td><h3><%= aboutdata.heading2%></h3></td></tr>
+
+      
+
+       <tr><th>descripation2</th></tr>
+       <tr><td><%= aboutdata.descripation2%></td></tr>
+
+
+        </tbody>
+    </table>
+</div>
+
+<%- include('../footer') %>

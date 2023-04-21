@@ -1,0 +1,122 @@
+<%- include('../sidebar.ejs') %>
+
+
+<%- include('../header.ejs') %>
+
+
+
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Data Table</strong>
+                      </div>
+                      <div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Agent</button>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                          <thead>
+                          
+                              <tr>
+                                
+                                 <th>S.no</th>
+                                 <th>Image</th>
+                                  <th>Name</th>
+                                
+                                  
+                                  <th>Email</th>
+                                  <th>Phone Number</th>
+                                  <th>Description</th>
+                                  <th>Action</th>
+                              </tr>
+                       
+                          </thead>
+                          <tbody>
+                            <% i=1 %>
+                                 <% agentdata.forEach((items)=>{        %> 
+                                    <tr>
+                                        <td><% i++%></td>
+                                 <td><img src="<%=items.agent_image.url%>" alt=""></td>
+                                  <td><%= items.name%></td>
+                                  <td><%=items.email%></td>
+                                  <td><%=items.phone_number%></td>
+                                  <td><%=items.descripation%></td>
+                                 
+                                
+                                  <td>
+                                    <a href="/admin/dashboard/agentview/<%=items._id%>" class="btn btn-primary " style="margin: 3px;">view</a>
+                                    <a href="/admin/dashboard/agentedit/<%=items._id%>"class="btn btn-primary" style="margin: 3px;">edit</a>
+                                    <a href="/admin/dashboard/agentdelete/<%=items._id%>"class="btn btn-primary" style="margin: 3px;">delete</a>
+                                  </td>
+                                    
+                                  </td>
+                                  
+                              </tr>
+                          <%  })   %>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Agent Detail</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+            <form action="/agentinsert" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="">Blog Images</label>
+                <input type="file" name="agent_image" class="form-control">
+              </div>
+            <div class="mb-3">
+              <label for="">Name</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+           
+            <div class="mb-3">
+                <label for="">Email</label>
+                <input type="email" name="email" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="">Phone NUmber</label>
+                <input type="number" name="phone_number" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="">Description</label>
+                <textarea name="descripation" class="form-control" id="" cols="4" rows="2"></textarea>
+              </div>
+
+            <div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+
+<%- include('../footer') %>
+
+
+

@@ -1,0 +1,61 @@
+<%- include('../sidebar.ejs') %>
+<%- include('../header.ejs') %>
+
+
+
+<div class="card-body">
+    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+        
+        <tbody id="bootstrap-data-table-export"  class="table table-striped table-bordered">
+          
+       <tr><th>Image</th></tr>
+       <tr><td><img src="<%=prop_data.front_image.url %>" alt="" style="max-width: 40%;"></td></tr>
+
+       <tr><th>Other Image</th></tr>
+         <tr><td >
+            <% for(let element of prop_data.images){ %>
+                <img src="<%= element.url %>" alt="" style="max-width: 30%;">
+            <% } %>
+         </td></tr>
+       <tr><th>Property Name</th></tr>
+       <tr><td><%= prop_data.property_name%></td></tr>
+
+       <tr><th>State</th></tr>
+       <tr><td><%= prop_data.state%></td></tr>
+
+       <tr><th>City</th></tr>
+       <tr><td><%=prop_data.city%></td></tr>
+
+       <tr><th>Address</th></tr>
+       <tr><td><%= prop_data.address%></td></tr>
+
+       <tr><th>description</th></tr>
+       <tr><td><%= prop_data.description%></td></tr>
+
+       <tr><th>Price</th></tr>
+       <tr><td><%=prop_data.price%></td></tr>
+
+       <tr><th>type</th></tr>
+       <tr><td><%=prop_data.type%></td></tr>
+
+       <tr><th>Area</th></tr>
+       <tr><td><%= prop_data.area%></td></tr>
+
+       <tr><th>Numbers of Bedroom</th></tr>
+       <tr><td><%= prop_data.bedroom%></td></tr>
+
+       <tr><th>Number of bathroom</th></tr>
+       <tr><td><%=prop_data.bathroom%></td></tr>
+
+       <tr><th>Number of Garage</th></tr>
+       <tr><td><%= prop_data.garage%></td></tr>
+
+       <tr><th>Amenities</th></tr>
+       <tr><td><%=prop_data.amenities%></td></tr>
+
+   
+        </tbody>
+    </table>
+</div>
+
+<%- include('../footer') %>

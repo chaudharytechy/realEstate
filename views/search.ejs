@@ -1,0 +1,173 @@
+<%- include('header.ejs')%>
+
+<!-- <div>
+  <p id="prop">hello ji</p>
+  <button onclick="loaddata()">click</button>
+</div> -->
+<!-- banner -->
+<div class="inside-banner">
+  <div class="container"> 
+    <span class="pull-right"><a href="index.php">Home</a> / Buy, Sale & Rent</span>
+    <h2>Buy, Sale & Rent</h2>
+</div>
+</div>
+<!-- banner -->
+
+
+<div class="container">
+<div class="properties-listing spacer">
+
+<div class="row">
+<div class="col-lg-3 col-sm-4 ">
+
+  <div class="search-form"><h4><span class="glyphicon glyphicon-search"></span> Search for</h4>
+    <form action="/search_Property" method="post">
+      <% loca.forEach((items)=>{  %>
+      <div class="mb-2">
+        <input type="search" class="form-control"  name="location" value="<%= items.city%>" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <% })%> 
+   
+    <!-- <div class="row">
+            <div class="col-lg-6">
+              <select class="form-control">
+                <option>Area sq.ft</option>
+                <option></option>
+                <option></option>
+              </select>
+            </div>
+            <div class="col-lg-5">
+              <select class="form-control">
+                <option>state</option>
+                <option></option>
+                <option></option>
+              </select>
+            </div>
+            <div class="col-lg-5">
+              <select class="form-control">
+                <option>City</option>
+                <option></option>
+                <option></option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <select class="form-control">
+                <option>No.Room</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div class="col-lg-7">
+              <select class="form-control">
+                <option>Price</option>
+                <option>$150,000 - $200,000</option>
+                <option>$200,000 - $250,000</option>
+                <option>$250,000 - $300,000</option>
+                <option>$300,000 - above</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+          <div class="col-lg-12">
+              <select class="form-control">
+                <option>Property Type</option>
+                <option>Apartment</option>
+                <option>Building</option>
+                <option>Office Space</option>
+              </select>
+              </div>
+          </div>
+        -->
+        <!-- <input type="text" name="price" id=""> -->
+          <button type="submit" class="btn btn-primary" style="width:40%;font-weight:700;">Search</button>
+    
+  </div>
+
+</form>
+<h4>Hot Properties</h4>
+<%hot_property.forEach((items)=>{   %>
+<div class="hot-properties hidden-xs">
+
+
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="<%=items.front_image.url%>" class="img-responsive img-circle" alt="properties"></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property"><%=items.property_name%></a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+</div>
+<% })%>
+
+</div>
+<!-- filter from high to low and vice versa -->
+<div class="col-lg-9 col-sm-8">
+<div class="sortby clearfix">
+<div class="pull-left result">Showing: 12 of 100 </div>
+  <div class="pull-right">
+  <select class="form-control"id="prop" onchange="loaddata()" value="">
+  <option  this.value="">Sort by</option>
+  <option this.value="-price">Price: Low to High</option>
+  <option this.value="price">Price: High to Low</option>
+</select></div>
+
+<script>
+  function loaddata(){
+let xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+if(this.readyState == 4 && this .status==200){
+  // document.getElementById("prop").innerHTML=this.responseText
+  console.log(this.responseText);
+}
+}
+  xhttp.open('GET',"http://localhost:3000/sort",true)
+  xhttp.send()
+}
+</script>
+<!-- filter from high to low and vice versa -->
+</div>
+<div class="row">
+
+     <!-- properties -->
+     <% search_data.forEach((items)=>{        %>
+      <div class="col-lg-4 col-sm-6">
+       
+      <div class="properties">
+        <div class="image-holder"><img src="<%=items.front_image.url%>" class="img-responsive" alt="properties">
+          <div class="status sold"><%=items.status%></div>
+        </div>
+        <h4><a href="property-"><%=items.property_name%></a></h4>
+        <p class="price">Price: $<%=items.price%></p>
+        <div class="listing-detail">City: <%=items.city%></div>
+        <a class="btn btn-primary" href="property/<%=items._id%>">View Details</a>
+      </div>
+   
+      </div>
+      <%})%>
+      <!-- properties -->
+
+
+      <div class="center">
+<ul class="pagination">
+          <li><a href="#">«</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">»</a></li>
+        </ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<%- include('footer.ejs')%>

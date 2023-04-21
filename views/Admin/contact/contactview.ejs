@@ -1,0 +1,32 @@
+<%- include('../sidebar.ejs') %>
+<%- include('../header.ejs') %>
+
+
+
+<div class="card-body">
+    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+        
+        <tbody>
+           
+
+
+       <tr><th>Name</th></tr>
+       <tr><td><h3><%= contactdata.name%></h3></td></tr>
+
+       <tr><th>Email</th></tr>
+       <tr><td><%= contactdata.email%></td></tr>
+
+       <tr><th>Phone Number</th></tr>
+       <tr><td><h3><%= contactdata.phone%></h3></td></tr>
+
+      
+
+       <tr><th>Message</th></tr>
+       <tr><td><%= contactdata.message%></td></tr>
+
+
+        </tbody>
+    </table>
+</div>
+
+<%- include('../footer') %>

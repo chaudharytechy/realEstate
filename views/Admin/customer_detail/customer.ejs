@@ -1,0 +1,76 @@
+<%- include('../sidebar.ejs') %>
+
+
+<%- include('../header.ejs') %>
+
+
+
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Data Table</strong>
+                      </div>
+                      
+                  </div>
+                  <div class="card-body">
+                      <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                          <thead>
+                          
+                              <tr>
+                                
+                                 <th>S.no</th>
+                                  <th>Property Name</th>
+                                  <th>Property Address</th>
+                                  <th>C_Name</th>
+                                  <th>C_Phone Number</th>
+                                  <th>C_Email</th>
+                                  <th>Action</th>
+                              </tr>
+                       
+                          </thead>
+                          <tbody>
+                            <% i=1%>
+                              <% customer_data.forEach((items)=>{    %> 
+                                    <tr>
+                                  <td><%= i++%></td>
+                                  <td><%=items.property_name%></td>
+                                  <td><%=items.address%></td>
+                                  <td><%=items.name%></td>
+                                  <td><%=items.phone%></td>
+                                  <td><%=items.email%></td>
+                                  <td>
+                                    <a href="/admin/dashboard/customerview/<%=items._id%>" class="btn btn-primary " style="margin: 3px;">view</a>
+                                   
+                                    <a href="/admin/dashboard/customerdelete/<%=items._id%>"class="btn btn-primary" style="margin: 3px;">delete</a>
+                                  </td>
+                                    
+                                  </td>
+                                  
+                              </tr>
+                           <% })%>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+
+<!-- Modal -->
+
+
+<%- include('../footer') %>
+
+
+

@@ -1,0 +1,123 @@
+<%- include("header.ejs" )%>
+
+<div class="">
+    
+ 
+            <div id="slider" class="sl-slider-wrapper">
+
+        <div class="sl-slider">
+          <% sliderdata.forEach((s)=>{ %>
+         
+            <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+              <div class="sl-slide-inner">
+                <div class="bg-img" style="background-image: url('<%= s.slider_image.url %>');"></div>
+                <h2><a href="#"><%= s.bedroom%> Bed Rooms  Aparment on Sale</a></h2>
+                <blockquote>              
+                <p class="location"><span class="glyphicon glyphicon-map-marker"></span><%= s.address%> </p>
+                <p> <%= s.descripation %> </p>
+                <cite>$<%= s.price%></cite>
+                </blockquote>
+              </div>
+            </div>
+
+          
+          <% }) %>
+      
+        </div><!-- /sl-slider -->
+
+
+
+        <nav id="nav-dots" class="nav-dots">
+          <span class="nav-dot-current"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </nav>
+
+      </div><!-- /slider-wrapper -->
+</div>
+
+
+
+<div class="banner-search">
+  <div class="container"> 
+    <!-- banner -->
+    <h3>Search Properties</h3>
+    <div class="searchbar">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6">
+          <% if(message.length>0) { %>
+            <div class="alert alert-successful">
+          <%= message %>
+            </div>
+            <% } %>
+          <form action="/search_Property" method="post">
+            <div class="mb-2">
+
+              <input type="search" class="form-control"  name="location" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Input city ">
+
+            </div>
+           
+            <button type="submit" class="btn btn-primary" style="width:40%;font-weight:700;">Search</button>
+          </form>
+          <div class="row">
+         
+              <!-- <div class="col-lg-3 col-sm-4">
+<a href=" /search_Property"> <button class="btn btn-success"  onclick="window.location.href=''">Find Now</button></a>
+              </div> -->
+          </div>
+          
+          
+        </div>
+        <div class="col-lg-5 col-lg-offset-1 col-sm-6 ">
+         
+          <p>Join now and get updated with all the properties deals.</p>
+          <a href="/login"><button class="btn btn-info" >Login</button>  </a>      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- banner -->
+<div class="container">
+  <div class="properties-listing spacer"> <a href="/buysellrent" class="pull-right viewall">View All Listing</a>
+    <h2>Featured Properties</h2>
+
+    <div id="owl-example" class="owl-carousel">
+      <% propertyData.forEach((items)=>{         %>   
+      <div class="properties">
+        <div class="image-holder"><img src="<%= items.front_image.url%>" class="img-responsive" alt="properties"/>
+          <div class="status sold"><%= items.status%></div>
+        </div>
+        <h4><a href="property"><%= items.property_name%></a></h4>
+        <p class="price">Price: <%= items.price%></p>
+        
+        <a class="btn btn-primary" href="property/<%= items._id%>">View Details</a>
+      </div>
+   <% })%>
+     
+
+      
+    </div>
+  </div>
+
+
+  <div class="spacer">
+    <div class="row">
+      <div class="col-lg-6 col-sm-9 recent-view">
+        <h3>About Us</h3>
+        <p><%=homeabout.descripation%> used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+          <br><a href="/about">Learn More</a></p>
+        
+      </div>
+
+
+      <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
+        <h3></h3>
+       <img src="<%= homeabout.about_image.url%>" alt="" style="    height: 220px;
+       max-width: 87%;">
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('footer.ejs')%>

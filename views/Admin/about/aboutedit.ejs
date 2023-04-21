@@ -1,0 +1,42 @@
+<%- include('../sidebar.ejs') %>
+<%- include('../header.ejs') %>
+
+
+
+<div class="card-body">
+    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+        
+        <div class="card-body">
+            <form  action="/aboutupdate/<%= aboutdata._id%>" method="post" enctype="multipart/form-data">
+         
+         
+             <table id="bootstrap-data-table-export" class="table table-striped table-bordered" >
+             
+                     <tbody>
+                        
+                    <tr><th>Image</th></tr>
+                    <tr><td><div class="w-50"><input type="file" name="about_image"class="form-control"/><img src="<%= aboutdata.about_image.url %>" alt=""style="max-width: 40%;"></div></td></tr>
+                        
+                    <tr><th>heading1</th></tr>
+                    <tr><td><input type="text" name="heading1"class="form-control" value="<%= aboutdata.heading1%>"/></td></tr>
+             
+                    <tr><th>description1</th></tr>
+                    <tr><td><input type="text" name="descripation1"class="form-control" value="<%= aboutdata.descripation1%>"/></td></tr>
+                    <tr><th>heading2</th></tr>
+                    <tr><td><input type="text" name="heading2"class="form-control" value="<%= aboutdata.heading2%>"/></td></tr>
+             
+                    <tr><th>description2</th></tr>
+                    <tr><td><input type="text" name="descripation2"class="form-control" value="<%= aboutdata.descripation2%>"/></td></tr>
+             
+                  
+                     </tbody>
+                       
+                   </tbody>
+               </table>
+               <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+         </div>
+    </table>
+</div>
+
+<%- include('../footer') %>

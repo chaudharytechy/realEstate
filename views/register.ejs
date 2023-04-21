@@ -1,0 +1,37 @@
+<%- include('header.ejs')%>
+<!-- banner -->
+<div class="inside-banner">
+  <div class="container"> 
+    <span class="pull-right"><a href="/">Home</a> /<a href="/login">Login</a></span>
+    <h2>Register</h2>
+</div>
+</div>
+<!-- banner -->
+
+
+<div class="container">
+<div class="spacer">
+<div class="row register">
+  <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+
+
+    <form
+    style="box-shadow: 8px 8px #b7ccd3"
+    method="post"
+    action="/registerinsert"
+  >
+            <input type="text" class="form-control" placeholder="Full Name" name="name">
+            <input type="text" class="form-control" placeholder="Enter Email" name="email">
+            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword">
+     
+            <button type="submit" class="btn btn-success" name="Submit">Register</button>  
+           </form>
+  
+        </div>
+  
+</div>
+</div>
+</div>
+
+<%- include('footer.ejs')%>

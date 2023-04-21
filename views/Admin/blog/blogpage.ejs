@@ -1,0 +1,144 @@
+<%- include('../sidebar.ejs') %>
+
+
+<%- include('../header.ejs') %>
+
+
+
+
+<!-- <div class="breadcrumbs">
+  <div class="col-sm-4">
+      <div class="page-header float-left">
+          <div class="page-title">
+              <h1>Dashboard</h1>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-8">
+      <div class="page-header float-right">
+          <div class="page-title">
+              <ol class="breadcrumb text-right">
+                  <li><a href="#">Dashboard</a></li>
+                  <li><a href="#">Table</a></li>
+                  <li class="active">Data table</li>
+              </ol>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+<div class="content mt-3">
+  <div class="animated fadeIn">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <strong class="card-title">Data Table</strong>
+                      </div>
+                      <div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Blog</button>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                          <thead>
+                          
+                              <tr>
+                                
+                                 <th>S.no</th>
+                                 <th>Image</th>
+                                  <th>Title</th>
+                                
+                                  <th>Description</th>
+                                  <th>Action</th>
+                              </tr>
+                       
+                          </thead>
+                          <tbody>
+                                 <% i=1%>
+                                  <% blog_data.forEach((items)=>{        %> 
+                                    <tr>
+                                      <td><%=i++%></td>
+                                  <td><img src="<%=items.blog_image.url%>" alt=""></td>
+                                  <td><h4><%=items.title%></h4></td>
+                                  <td><%=items.descripation%></td>
+                                 
+                                
+                                  <td>
+                                    <a href="/admin/dashboard/blogview/<%= items._id%>" class="btn btn-primary " style="margin: 3px;">view</a>
+                                    <a href="/admin/dashboard/blogedit/<%= items._id%>"class="btn btn-primary" style="margin: 3px;">edit</a>
+                                    <a href="/admin/dashboard/blogdelete/<%= items._id%>"class="btn btn-primary" style="margin: 3px;">delete</a>
+                                  </td>
+                                    
+                                  </td>
+                                  
+                              </tr>
+                           <% })%>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div><!-- .animated -->
+
+
+</div><!-- .content -->
+</div><!-- /#right-panel -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Property Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/bloginsert" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="">Blog Images</label>
+                <input type="file" name="blog_image" class="form-control">
+              </div>
+            <div class="mb-3">
+              <label for="">Title</label>
+              <input type="text" name="title" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="">Description</label>
+              <textarea name="descripation" class="form-control" id="" cols="30" rows="7"></textarea>
+            </div>
+
+            <div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+
+<%- include('../footer') %>
+
+
+
+<!-- property Name
+property address
+property state
+property city
+property images
+property price
+property description
+property type
+property area
+Beds
+Baths
+garage
+
+
+amenities -->

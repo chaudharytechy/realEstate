@@ -1,0 +1,129 @@
+<%- include('header.ejs')%>
+
+
+<!-- banner -->
+<div class="inside-banner">
+  <div class="container"> 
+    <span class="pull-right"><a href="/">Home</a> / Buy, Sale & Rent</span>
+    <h2>Buy, Sale & Rent</h2>
+</div>
+</div>
+<!-- banner -->
+
+<% if(message.length>0) { %>
+  <div class="alert alert-primary">
+<%= message %>
+  </div>
+  <% } %>
+<div class="container">
+<div class="properties-listing spacer">
+
+<div class="row">
+<div class="col-lg-3 col-sm-4 ">
+
+  <div class="search-form">
+
+    <form action="/search_Property" method="post">
+      <div class="mb-2">
+
+        <input type="search" class="form-control"  name="location" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Input city ">
+
+      </div>
+     
+      <button type="submit" class="btn btn-primary" style="width:40%;font-weight:700;">Search</button>
+    </form>
+
+         
+  <!-- <button class="btn btn-primary">Find Now</button> -->
+
+  </div>
+
+
+
+<div class="hot-properties hidden-xs">
+<h4>Hot Properties</h4>
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+<div class="row">
+                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"></div>
+                <div class="col-lg-8 col-sm-7">
+                  <h5><a href="property">Integer sed porta quam</a></h5>
+                  <p class="price">$300,000</p> </div>
+              </div>
+
+</div>
+
+
+</div>
+
+<div class="col-lg-9 col-sm-8">
+<div class="sortby clearfix">
+<div class="pull-left result">Showing: 12 of 100 </div>
+  <div class="pull-right">
+  <select class="form-control">
+  <option>Sort by</option>
+  <option>Price: Low to High</option>
+  <option>Price: High to Low</option>
+</select></div>
+
+</div>
+<div class="row">
+
+     <!-- properties -->
+     <% property_data.forEach((items)=>{        %>
+      <div class="col-lg-4 col-sm-6">
+       
+      <div class="properties">
+        <div class="image-holder"><img src="<%=items.front_image.url%>" class="img-responsive" alt="properties">
+          <div class="status sold"><%=items.status%></div>
+        </div>
+        <h4><a href="property-"><%=items.property_name%></a></h4>
+        <p class="price">Price: $<%=items.price%></p>
+        <div class="">City:<%=items.city%></div>
+        <a class="btn btn-primary" href="property/<%=items._id%>">View Details</a>
+      </div>
+   
+      </div>
+      <%})%>
+      <!-- properties -->
+
+
+      <div class="center">
+<ul class="pagination">
+          <li><a href="#">«</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">»</a></li>
+        </ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<%- include('footer.ejs')%>
